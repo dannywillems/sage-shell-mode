@@ -74,6 +74,9 @@
   :type '(choice (directory :tag "Directory")
                  (const :tag "Not specified" nil)))
 
+;;;###autoload
+(defvaralias 'sage-shell:command 'sage-shell:sage-executable)
+
 (defcustom sage-shell:sage-executable nil
   "Name of the Sage executable. If the Sage executable in your
   PATH and (exeutable-find \"sage\") is non-nil, then you do not
@@ -81,9 +84,6 @@
   :group 'sage-shell
   :type '(choice (string :tag "Executable file of Sage")
                  (const :tag "Not specified" nil)))
-
-;;;###autoload
-(defvaralias 'sage-shell:command 'sage-shell:sage-executable)
 
 (defcustom sage-shell:input-history-cache-file
   nil
@@ -251,15 +251,15 @@ will be ignored."
   :type '(choice (const :tag "Not Specified" nil)
                  (string :tag "LaTeX command")))
 
+;;;###autoload
+(defvaralias 'sage-shell:add-to-texinputs-p
+  'sage-shell-sagetex:add-to-texinputs-p)
+
 (defcustom sage-shell-sagetex:add-to-texinputs-p t
   "Non-nil means sage-shell-mode adds
 $SAGE_ROOT/local/share/texmf/tex/generic/sagetex/ to TEXINPUTS."
   :type 'boolean
   :group 'sage-shell-sagetex)
-
-;;;###autoload
-(defvaralias 'sage-shell:add-to-texinputs-p
-  'sage-shell-sagetex:add-to-texinputs-p)
 
 (defcustom sage-shell-sagetex:pop-to-error-buffer t
   "Non-nil means pop to the SageTeX error buffer."
