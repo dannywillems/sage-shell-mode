@@ -2686,8 +2686,8 @@ function does not highlight the input."
         (when (or after-prompt1 after-prompt2)
           (if (string= (make-string (length line) (string-to-char " "))
                        line)
-              (delete-region (point-at-bol) (point)))
-          (delete-region (point-at-bol) (point))
+              (delete-region (line-beginning-position) (point)))
+          (delete-region (line-beginning-position) (point))
           (insert line)
           ;; If line contains triple quotes or top-level return statement, the
           ;; indent function raises an error.
@@ -2998,7 +2998,7 @@ matches last process output."
           (looking-at sage-shell:prompt2-regexp))
     (let ((indent-str nil))
       (with-current-buffer (sage-shell-indent:get-indenting-buffer)
-        (setq indent-str (buffer-substring (point-at-bol) (point))))
+        (setq indent-str (buffer-substring (line-beginning-position) (point))))
       (when (get-buffer-process sage-shell:process-buffer)
         (goto-char (process-mark (get-buffer-process (current-buffer))))
         (insert indent-str)))))
