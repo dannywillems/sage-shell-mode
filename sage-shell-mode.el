@@ -3648,6 +3648,10 @@ lines which match sage-shell:-prompt-regexp-no-eol are dropped from the output."
 ;; For old Emacs (Emacs 24.3 or older)
 (defalias 'sage-shell-cpl-state-p #'sage-shell-cpl-statep)
 
+;; Type of a completion state alist, recognized by `sage-shell-cpl-statep'.
+(cl-deftype sage-shell-cpl-state ()
+  '(satisfies sage-shell-cpl-statep))
+
 (defun sage-shell:-to-python-dict (alst)
   "nil is converted to None."
   (format "{%s}"
