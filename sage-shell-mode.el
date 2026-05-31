@@ -4752,11 +4752,11 @@ inserted in the process buffer before executing the command."
                  finally return (nreverse lines))))))
 
 (defun sage-shell:send-doctest (arg)
-  (interactive "P")
   "If looking at a sage: prompt, send the current doctest lines to the Sage
 process.
 With prefix argument, send all doctests (at sage: prompts) until
 the end of the docstring."
+  (interactive "P")
   (sage-shell-edit:set-sage-proc-buf-internal :select-p t)
   ;; Some code are copied from sage-test.el provided by sage-mode
   (unless arg
@@ -5156,8 +5156,8 @@ Otherwise return nil."
                                      "sage-shell-pdb:input-"
                                      cmd))
                         ()
+                      ,(format "Input \\='%s\\=' in the process buffer." cmd)
                       (interactive)
-                      ,(format "Input '%s' in the process buffer." cmd)
                       (sage-shell-pdb:send--command ,cmd)))))
 
 ;; Define sage-shell-pdb:input-next, etc.
