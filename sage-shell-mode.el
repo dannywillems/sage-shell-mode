@@ -3188,11 +3188,11 @@ python-mode"
                            (goto-char (point-max))
                            (newline)
                            (cl-case sym
-                             ('forward (insert-btn "[forward]" 1))
-                             ('back (insert-btn "[back]" -1))
-                             ('both (insert-btn "[back]" -1)
-                                    (insert "  ")
-                                    (insert-btn "[forward]" 1))))))
+                             (forward (insert-btn "[forward]" 1))
+                             (back (insert-btn "[back]" -1))
+                             (both (insert-btn "[back]" -1)
+                                   (insert "  ")
+                                   (insert-btn "[forward]" 1))))))
 
       (cond
        ((eq len 1))
