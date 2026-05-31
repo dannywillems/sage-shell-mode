@@ -218,7 +218,8 @@ The checking is done asyncally."
 (defcustom sage-shell:set-ipython-version-on-startup t
   "Non `nil' means set `sage-shell:use-prompt-toolkit' and
 `sage-shell:simple-prompt' according to the available IPython version.
-This (synchronous) setting can be replaced by setting variables in the init file.")
+This (synchronous) setting can be replaced by setting variables in
+the init file.")
 
 (defcustom sage-shell-sagetex:pre-latex-command
   "latex -interaction=nonstopmode"
@@ -5532,7 +5533,8 @@ This requires AUCTEX."
           (t (error "Not in a Sage environment.")))))
 
 (defun sage-shell-sagetex:send-environment ()
-  "If the point is in environment sagesilent or sageblock, then load the contents of environment using existing Sage process.
+  "If the point is in environment sagesilent or sageblock, then load
+the contents of environment using existing Sage process.
 This requires AUCTeX."
   (interactive)
   (cl-destructuring-bind (beg . end) (sage-shell-sagetex:-tex-env-region)

@@ -562,9 +562,10 @@ running."
    'text t))
 
 (defun sage-shell-view-disable-inline-output ()
-  "Disable inline output pretty-printing, i.e. do not typeset output from sage
-in the `sage-shell-mode' buffer.
-WARNING: this communicates with the sage process.  Only use this when sage is running."
+  "Disable inline output pretty-printing, i.e. do not typeset output
+from sage in the `sage-shell-mode' buffer.
+WARNING: this communicates with the sage process.  Only use this
+when sage is running."
   (interactive)
   (sage-shell-view--set-inline-state
    'text nil))
