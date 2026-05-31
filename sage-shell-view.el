@@ -140,7 +140,7 @@ If the value is `nil', then this variable is ignored."
 
 (defcustom sage-shell-view-dvipng-options nil
   "*Options for dvipng when converting from DVI to PNG."
-  :type 'list
+  :type '(repeat string)
   :group 'sage-shell-view)
 
 (defcustom sage-shell-view-margin '(1 . 1)

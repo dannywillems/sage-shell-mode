@@ -174,8 +174,8 @@ displayed. If non-nil, this function will be called after sending
 the contents of a buffer, a region or a file to the Sage
 process."
   :type '(choice (const :tag "default" nil)
-                 (const :tag "display-buffer" 'display-buffer)
-                 (const :tag "pop-to-buffer" 'pop-to-buffer))
+                 (const :tag "display-buffer" display-buffer)
+                 (const :tag "pop-to-buffer" pop-to-buffer))
   :group 'sage-shell)
 
 (defcustom sage-shell:inspect-ingnore-classes nil
@@ -219,7 +219,9 @@ The checking is done asyncally."
   "Non `nil' means set `sage-shell:use-prompt-toolkit' and
 `sage-shell:simple-prompt' according to the available IPython version.
 This (synchronous) setting can be replaced by setting variables in
-the init file.")
+the init file."
+  :type 'boolean
+  :group 'sage-shell)
 
 (defcustom sage-shell-sagetex:pre-latex-command
   "latex -interaction=nonstopmode"
