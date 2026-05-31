@@ -182,7 +182,7 @@ process."
   "If non-nil, this should be a list of strings.
 Each string should be a class of Sage. When non-nil instances or methods
 of these classes are ignored by `ac-quick-help' and `eldoc'.
-If the value is equal to '(\"\"), then it does not ignore anything."
+If the value is equal to \\='(\"\"), then it does not ignore anything."
   :group 'sage-shell
   :type '(repeat string))
 
@@ -1293,7 +1293,7 @@ if [ $1 = .. ]; then shift; fi; exec \"$@\""
                               (switch-function 'switch-to-buffer)
                               buffer-name)
   "Running Sage function internal.
-SWITCH-FUNCTION is 'no-switch, or a function with one argument.
+SWITCH-FUNCTION is \\='no-switch, or a function with one argument.
 If buffer-name is non-nil, it will be the buffer name of the process buffer."
   (let ((buf (get-buffer-create (if (stringp buffer-name)
                                     buffer-name
@@ -3094,7 +3094,7 @@ python-mode"
 
 (defvar sage-shell-help:symbol-not-found-regexp
   "Object `.*?` not found."
-  "Regexp that matches Sage's 'symbol not found' warning.")
+  "Regexp that matches Sage's \\='symbol not found\\=' warning.")
 
 (defun sage-shell-help:help-buffer-init (symbol)
   (let* ((case-fold-search t)
@@ -3694,9 +3694,9 @@ lines which match sage-shell:-prompt-regexp-no-eol are dropped from the output."
 (defun sage-shell-cpl:var-base-name-and-att-start (cur-intf)
   "Returns cons of the base name of the variable and the point of
    beginig of the attribute. For example, if there is a python
-   code 'abc.de' and the point is at 'd' or 'e' and 'abc' does
-   not call any functions, this returns cons of a string 'abc'
-   and the point at 'd', otherwise nil."
+   code \\='abc.de\\=' and the point is at \\='d\\=' or \\='e\\=' and \\='abc\\=' does
+   not call any functions, this returns cons of a string \\='abc\\='
+   and the point at \\='d\\=', otherwise nil."
   (let ((bol (line-beginning-position))
         (var-chars (sage-shell-interfaces:get cur-intf 'var-chars))
         att-beg base-end)
