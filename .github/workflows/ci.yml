@@ -13,10 +13,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        emacs_version:
-          - '24.4'
-          - '30.1'
-          - 'snapshot'
+        include:
+          - emacs_version: '24.4'
+            werror: 't'
+          - emacs_version: '30.1'
+            werror: 't'
+          - emacs_version: 'snapshot'
+            werror: 't'
     steps:
       - name: Set up Emacs
         uses: purcell/setup-emacs@master
@@ -36,12 +39,12 @@ jobs:
             --eval "(package-refresh-contents)" \
             --eval "(dolist (pkg '(deferred let-alist)) (unless (package-installed-p pkg) (package-install pkg)))"
 
-      - name: Byte-compile sources
+      - name: Byte-compile sources (warnings as errors)
         run: |
           emacs -Q --batch \
             --eval "(require 'package)" \
             --eval "(package-initialize)" \
-            --eval "(setq byte-compile-error-on-warn nil)" \
+            --eval "(setq byte-compile-error-on-warn ${{ matrix.werror }})" \
             -L . \
             -f batch-byte-compile \
             sage-shell-mode.el sage-shell-blocks.el sage-shell-view.el
